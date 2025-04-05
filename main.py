@@ -14,8 +14,7 @@ names = ["Ali", "Ahmed", "Sara","zubair","dania"] # Yeh ek list hai jisme kuch n
 # Yeh ek GET request ka endpoint define kar raha hai jo root ("/") pe chalega
 #@app is a decorator jo function ko FastAPI ka route banata hai
 # Yeh function jab bhi root URL pe request aayegi, tab chalega
-@app.get("/fastapi_data")   #url
-
+@app.get("/")   #url
 def get_function():  #jab url call huga tw ye function khud say chalinga
     return  names  #ye function ak json response return kr raha hain
 
@@ -28,7 +27,7 @@ class Data_post(BaseModel): #ye class pydantic ki baseModel se inherit kar rahi 
    
 
 
-@app.post("/fastapi_data") #url
+@app.post("/") #url
 
 def post_function(data: Data_post):
     #ye function jab bhi /fastapi_data URL pe request aayegi, tab chalega
@@ -43,7 +42,7 @@ def post_function(data: Data_post):
  #---------------------------------------Delete(delete)fast api----------------------------------------------------
    
     
-@app.delete("/fastapi_data/{name}") # url
+@app.delete("/{name}") # url
 
 def delete_function(name : str):
     names.remove(name)
@@ -52,7 +51,7 @@ def delete_function(name : str):
     
 #---------------------------------------PUT(update)fast api----------------------------------------------------
 
-@app.put("/fastapi_data/{name}") #url
+@app.put("/{name}") #url
 
 def put_delete(name:str , data:Data_post): #ye function jab bhi /fastapi_data URL pe request aayegi, tab chalega
     for i , n in enumerate(names): #ye loop list ke har element ko check kar raha hai
